@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleep &amp; Coffee — Research Poster</title>
+<style>
+  @page { size: A3 portrait; margin: 0; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: #F5EFE2;
+    color: #1A1612;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .poster {
+    width: 297mm;
+    min-height: 420mm;
+    padding: 16mm 16mm 12mm;
+    background: #F5EFE2;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .deco-1, .deco-2 {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .deco-1 {
+    top: -50mm; right: -50mm;
+    width: 140mm; height: 140mm;
+    border: 8mm solid #6B3410;
+    opacity: 0.08;
+  }
+  .deco-2 {
+    bottom: -60mm; left: -35mm;
+    width: 110mm; height: 110mm;
+    border: 5mm solid #C8671C;
+    opacity: 0.07;
+  }
+
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 0.8mm solid #1A1612;
+    margin-bottom: 8mm;
+  }
+  .header-table td { padding-bottom: 4mm; }
+  .header-left {
+    font-size: 9pt;
+    letter-spacing: 3pt;
+    font-weight: bold;
+    color: #4A3F35;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .header-right {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: #4A3F35;
+    text-align: right;
+  }
+
+  .kicker {
+    font-size: 9pt;
+    letter-spacing: 3pt;
+    text-transform: uppercase;
+    color: #C8671C;
+    font-weight: bold;
+    margin-bottom: 5mm;
+  }
+  h1.title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 64pt;
+    line-height: 0.95;
+    letter-spacing: -1.5pt;
+    color: #1A1612;
+    margin: 0 0 5mm 0;
+  }
+  h1.title em {
+    font-style: italic;
+    color: #6B3410;
+  }
+  .subtitle {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 15pt;
+    font-style: italic;
+    color: #4A3F35;
+    line-height: 1.3;
+    max-width: 220mm;
+    margin: 0 0 10mm 0;
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 0.6mm solid #1A1612;
+    border-bottom: 0.6mm solid #1A1612;
+    margin-bottom: 10mm;
+  }
+  .stats-table td {
+    padding: 5mm;
+    border-right: 0.2mm solid rgba(26,22,18,0.25);
+    vertical-align: top;
+    width: 25%;
+  }
+  .stats-table td:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 38pt;
+    line-height: 1;
+    color: #6B3410;
+    letter-spacing: -1pt;
+    margin-bottom: 2mm;
+  }
+  .stat-num .sign { color: #C8671C; }
+  .stat-label {
+    font-size: 8pt;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: #4A3F35;
+    font-weight: bold;
+    line-height: 1.3;
+  }
+
+  .main-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10mm;
+  }
+  .main-table td {
+    vertical-align: top;
+    padding: 0;
+  }
+  .main-table td.gap { width: 6mm; }
+  .main-table td.finding-cell { width: 53%; }
+  .main-table td.chart-cell { width: 44%; }
+
+  .finding {
+    background: #3E1D0A;
+    color: #FBF7EC;
+    padding: 11mm 9mm 9mm;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .finding .stamp {
+    position: absolute;
+    top: -3mm; right: 7mm;
+    background: #C8671C;
+    color: #FBF7EC;
+    padding: 1.5mm 4mm;
+    font-size: 8pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .finding h2 {
+    font-family: 'Georgia', serif;
+    font-size: 10pt;
+    font-weight: bold;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    margin: 0 0 4mm 0;
+    opacity: 0.65;
+  }
+  .finding .quote {
+    font-family: 'Georgia', serif;
+    font-size: 17pt;
+    font-weight: normal;
+    line-height: 1.3;
+    font-style: italic;
+    margin: 0 0 6mm 0;
+  }
+  .finding .quote strong {
+    color: #F2A55C;
+    font-weight: bold;
+    font-style: normal;
+  }
+  .finding .verdict-bar {
+    padding-top: 5mm;
+    border-top: 0.2mm solid rgba(245,239,226,0.15);
+  }
+  .verdict-pill {
+    background: rgba(245,239,226,0.08);
+    padding: 2mm 4mm;
+    font-size: 9pt;
+    font-weight: bold;
+    letter-spacing: 0.5pt;
+    display: inline-block;
+    margin-right: 2mm;
+  }
+  .verdict-pill strong { color: #F2A55C; }
+
+  .chart-block {
+    background: #FBF7EC;
+    border: 0.5mm solid #1A1612;
+    padding: 6mm;
+    box-sizing: border-box;
+  }
+  .chart-block h3, .secondary-chart h3 {
+    font-size: 8pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 0 1mm 0;
+    color: #4A3F35;
+  }
+  .chart-title {
+    font-family: 'Georgia', serif;
+    font-size: 15pt;
+    font-weight: bold;
+    line-height: 1.1;
+    margin: 0 0 4mm 0;
+    color: #1A1612;
+  }
+  svg { width: 100%; height: auto; display: block; }
+  .chart-cap {
+    font-family: 'Georgia', serif;
+    font-size: 9pt;
+    font-style: italic;
+    color: #4A3F35;
+    margin: 3mm 0 0 0;
+    line-height: 1.4;
+  }
+
+  .secondary-chart {
+    background: #FBF7EC;
+    border: 0.5mm solid #1A1612;
+    padding: 6mm;
+    margin-bottom: 10mm;
+  }
+
+  .bottom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8mm;
+  }
+  .bottom-table td {
+    vertical-align: top;
+    padding: 0;
+  }
+  .bottom-table td.gap { width: 6mm; }
+  .bottom-table td.col-cell { width: 32.66%; }
+
+  .col h4 {
+    font-size: 8pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #C8671C;
+    margin: 0 0 3mm 0;
+    padding-bottom: 2mm;
+    border-bottom: 0.2mm solid #1A1612;
+  }
+  .col h5 {
+    font-family: 'Georgia', serif;
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 1.15;
+    margin: 0 0 3mm 0;
+    color: #1A1612;
+  }
+  .col p {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #4A3F35;
+    margin: 0 0 2mm 0;
+  }
+
+  .footer-table {
+    width: 100%;
+    border-top: 1mm double #1A1612;
+    border-collapse: collapse;
+    font-size: 9pt;
+    color: #4A3F35;
+  }
+  .footer-table td { padding-top: 4mm; }
+  .footer-left {
+    font-weight: bold;
+    letter-spacing: 0.5pt;
+    text-align: left;
+  }
+  .footer-right {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 10pt;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="deco-1"></div>
+  <div class="deco-2"></div>
+
+  <table class="header-table"><tr>
+    <td class="header-left">C-DE211 · DATA ANALYSIS · PROJECT 3 · SPRING 2026</td>
+    <td class="header-right">Vol. 01 — Sleep &amp; Caffeine</td>
+  </tr></table>
+
+  <div class="kicker">AN EMPIRICAL INVESTIGATION · N = 10,000</div>
+  <h1 class="title">Does less sleep mean <em>more coffee?</em></h1>
+  <div class="subtitle">Testing whether sleep duration predicts daily coffee consumption across 10,000 adults — and how strong the effect actually is.</div>
+
+  <table class="stats-table"><tr>
+    <td>
+      <div class="stat-num"><span class="sign">−</span>0.19</div>
+      <div class="stat-label">Pearson r<br>(sleep × coffee)</div>
+    </td>
+    <td>
+      <div class="stat-num">&lt; 0.001</div>
+      <div class="stat-label">p-value<br>statistical significance</div>
+    </td>
+    <td>
+      <div class="stat-num">+40%</div>
+      <div class="stat-label">more coffee<br>short vs long sleepers</div>
+    </td>
+    <td>
+      <div class="stat-num">10k</div>
+      <div class="stat-label">respondents<br>global sample</div>
+    </td>
+  </tr></table>
+
+  <table class="main-table"><tr>
+    <td class="finding-cell">
+      <div class="finding">
+        <div class="stamp">Verdict</div>
+        <h2>The Answer</h2>
+        <div class="quote">
+          Yes — but the effect is <strong>small</strong>. Short sleepers drink about <strong>0.80 more cups</strong> per day than long sleepers. The relationship is real, but sleep is <strong>only one piece</strong> of why people reach for coffee.
+        </div>
+        <div class="verdict-bar">
+          <span class="verdict-pill">H₀ <strong>REJECTED</strong></span>
+          <span class="verdict-pill">r² ≈ <strong>3.6%</strong></span>
+          <span class="verdict-pill">n = <strong>10,000</strong></span>
+        </div>
+      </div>
+    </td>
+    <td class="gap"></td>
+    <td class="chart-cell">
+      <div class="chart-block">
+        <h3>Figure 01</h3>
+        <div class="chart-title">Coffee by sleep group</div>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <line x1="50" y1="230" x2="390" y2="230" stroke="#1A1612" stroke-width="1.5"/>
+          <line x1="50" y1="30" x2="50" y2="230" stroke="#1A1612" stroke-width="1.5"/>
+
+          <g font-family="Helvetica" font-size="9" fill="#4A3F35">
+            <text x="44" y="233" text-anchor="end">0</text>
+            <text x="44" y="200" text-anchor="end">1</text>
+            <text x="44" y="167" text-anchor="end">2</text>
+            <text x="44" y="134" text-anchor="end">3</text>
+            <text x="44" y="101" text-anchor="end">4</text>
+            <text x="44" y="68" text-anchor="end">5</text>
+            <text x="44" y="35" text-anchor="end">6</text>
+          </g>
+          <text x="18" y="130" font-family="Helvetica" font-size="9" fill="#4A3F35" font-weight="600"
+                transform="rotate(-90, 18, 130)">cups/day</text>
+
+          <g stroke="#1A1612" stroke-width="0.3" opacity="0.15">
+            <line x1="50" y1="200" x2="390" y2="200"/>
+            <line x1="50" y1="167" x2="390" y2="167"/>
+            <line x1="50" y1="134" x2="390" y2="134"/>
+            <line x1="50" y1="101" x2="390" y2="101"/>
+            <line x1="50" y1="68" x2="390" y2="68"/>
+            <line x1="50" y1="35" x2="390" y2="35"/>
+          </g>
+
+          <line x1="120" y1="35" x2="120" y2="70" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="120" y1="230" x2="120" y2="210" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="105" y1="35" x2="135" y2="35" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="105" y1="230" x2="135" y2="230" stroke="#6B3410" stroke-width="1.2"/>
+          <rect x="90" y="70" width="60" height="140" fill="#C8671C" opacity="0.85" stroke="#6B3410" stroke-width="1.5"/>
+          <line x1="90" y1="136" x2="150" y2="136" stroke="#F5EFE2" stroke-width="2.5"/>
+
+          <line x1="220" y1="50" x2="220" y2="85" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="220" y1="225" x2="220" y2="205" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="205" y1="50" x2="235" y2="50" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="205" y1="225" x2="235" y2="225" stroke="#6B3410" stroke-width="1.2"/>
+          <rect x="190" y="85" width="60" height="120" fill="#8B4513" opacity="0.85" stroke="#3E1D0A" stroke-width="1.5"/>
+          <line x1="190" y1="149" x2="250" y2="149" stroke="#F5EFE2" stroke-width="2.5"/>
+
+          <line x1="320" y1="70" x2="320" y2="110" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="320" y1="220" x2="320" y2="200" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="305" y1="70" x2="335" y2="70" stroke="#6B3410" stroke-width="1.2"/>
+          <line x1="305" y1="220" x2="335" y2="220" stroke="#6B3410" stroke-width="1.2"/>
+          <rect x="290" y="110" width="60" height="90" fill="#3E1D0A" opacity="0.85" stroke="#1A1612" stroke-width="1.5"/>
+          <line x1="290" y1="163" x2="350" y2="163" stroke="#F5EFE2" stroke-width="2.5"/>
+
+          <circle cx="120" cy="136" r="3" fill="#F5EFE2" stroke="#1A1612" stroke-width="1"/>
+          <circle cx="220" cy="149" r="3" fill="#F5EFE2" stroke="#1A1612" stroke-width="1"/>
+          <circle cx="320" cy="163" r="3" fill="#F5EFE2" stroke="#1A1612" stroke-width="1"/>
+
+          <g font-family="Georgia" font-size="11" font-weight="700" fill="#1A1612">
+            <text x="120" y="60" text-anchor="middle">2.84</text>
+            <text x="220" y="75" text-anchor="middle">2.45</text>
+            <text x="320" y="100" text-anchor="middle">2.04</text>
+          </g>
+
+          <g font-family="Helvetica" font-size="10" font-weight="600" fill="#1A1612">
+            <text x="120" y="248" text-anchor="middle">Short</text>
+            <text x="120" y="260" text-anchor="middle" font-size="8" fill="#4A3F35">&lt;6 hours</text>
+            <text x="220" y="248" text-anchor="middle">Normal</text>
+            <text x="220" y="260" text-anchor="middle" font-size="8" fill="#4A3F35">6–8 hours</text>
+            <text x="320" y="248" text-anchor="middle">Long</text>
+            <text x="320" y="260" text-anchor="middle" font-size="8" fill="#4A3F35">&gt;8 hours</text>
+          </g>
+        </svg>
+        <p class="chart-cap">Short sleepers consume the most coffee; long sleepers the least. A clear monotonic drop.</p>
+      </div>
+    </td>
+  </tr></table>
+
+  <div class="secondary-chart">
+    <h3>Figure 02 · The underlying trend</h3>
+    <div class="chart-title">Sleep hours vs coffee intake — 10,000 individuals</div>
+    <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="220" x2="860" y2="220" stroke="#1A1612" stroke-width="1.5"/>
+      <line x1="50" y1="20" x2="50" y2="220" stroke="#1A1612" stroke-width="1.5"/>
+
+      <g font-family="Helvetica" font-size="9" fill="#4A3F35">
+        <text x="44" y="223" text-anchor="end">0</text>
+        <text x="44" y="198" text-anchor="end">1</text>
+        <text x="44" y="173" text-anchor="end">2</text>
+        <text x="44" y="148" text-anchor="end">3</text>
+        <text x="44" y="123" text-anchor="end">4</text>
+        <text x="44" y="98" text-anchor="end">5</text>
+        <text x="44" y="73" text-anchor="end">6</text>
+        <text x="44" y="48" text-anchor="end">7</text>
+        <text x="44" y="23" text-anchor="end">8</text>
+      </g>
+
+      <g font-family="Helvetica" font-size="9" fill="#4A3F35">
+        <text x="50" y="238" text-anchor="middle">3</text>
+        <text x="165" y="238" text-anchor="middle">4</text>
+        <text x="281" y="238" text-anchor="middle">5</text>
+        <text x="397" y="238" text-anchor="middle">6</text>
+        <text x="512" y="238" text-anchor="middle">7</text>
+        <text x="628" y="238" text-anchor="middle">8</text>
+        <text x="744" y="238" text-anchor="middle">9</text>
+        <text x="860" y="238" text-anchor="middle">10</text>
+      </g>
+
+      <text x="455" y="256" font-family="Helvetica" font-size="10" font-weight="600" fill="#1A1612" text-anchor="middle">Sleep Hours</text>
+      <text x="20" y="120" font-family="Helvetica" font-size="10" font-weight="600" fill="#1A1612" text-anchor="middle"
+            transform="rotate(-90, 20, 120)">Coffee (cups/day)</text>
+
+      <g fill="#8B4513" opacity="0.35">
+        <circle cx="90" cy="85" r="2"/><circle cx="95" cy="130" r="2"/><circle cx="120" cy="60" r="2"/>
+        <circle cx="140" cy="95" r="2"/><circle cx="150" cy="150" r="2"/><circle cx="165" cy="75" r="2"/>
+        <circle cx="180" cy="110" r="2"/><circle cx="190" cy="165" r="2"/><circle cx="205" cy="90" r="2"/>
+        <circle cx="215" cy="140" r="2"/><circle cx="225" cy="175" r="2"/><circle cx="235" cy="70" r="2"/>
+        <circle cx="250" cy="115" r="2"/><circle cx="260" cy="155" r="2"/><circle cx="275" cy="85" r="2"/>
+        <circle cx="285" cy="130" r="2"/><circle cx="295" cy="180" r="2"/><circle cx="310" cy="100" r="2"/>
+        <circle cx="320" cy="145" r="2"/><circle cx="330" cy="185" r="2"/><circle cx="345" cy="110" r="2"/>
+        <circle cx="355" cy="160" r="2"/><circle cx="365" cy="195" r="2"/><circle cx="380" cy="125" r="2"/>
+        <circle cx="390" cy="170" r="2"/><circle cx="400" cy="205" r="2"/><circle cx="415" cy="135" r="2"/>
+        <circle cx="425" cy="180" r="2"/><circle cx="435" cy="210" r="2"/><circle cx="450" cy="145" r="2"/>
+        <circle cx="460" cy="185" r="2"/><circle cx="470" cy="212" r="2"/><circle cx="485" cy="150" r="2"/>
+        <circle cx="495" cy="190" r="2"/><circle cx="505" cy="213" r="2"/><circle cx="520" cy="155" r="2"/>
+        <circle cx="530" cy="195" r="2"/><circle cx="540" cy="214" r="2"/><circle cx="555" cy="160" r="2"/>
+        <circle cx="565" cy="200" r="2"/><circle cx="575" cy="215" r="2"/><circle cx="590" cy="165" r="2"/>
+        <circle cx="600" cy="205" r="2"/><circle cx="610" cy="218" r="2"/><circle cx="625" cy="170" r="2"/>
+        <circle cx="635" cy="205" r="2"/><circle cx="645" cy="190" r="2"/><circle cx="660" cy="175" r="2"/>
+        <circle cx="670" cy="210" r="2"/><circle cx="680" cy="155" r="2"/><circle cx="695" cy="195" r="2"/>
+        <circle cx="705" cy="215" r="2"/><circle cx="715" cy="175" r="2"/><circle cx="730" cy="200" r="2"/>
+        <circle cx="740" cy="217" r="2"/><circle cx="750" cy="185" r="2"/><circle cx="765" cy="205" r="2"/>
+        <circle cx="775" cy="215" r="2"/><circle cx="785" cy="190" r="2"/><circle cx="800" cy="210" r="2"/>
+        <circle cx="810" cy="178" r="2"/><circle cx="825" cy="205" r="2"/><circle cx="840" cy="214" r="2"/>
+        <circle cx="120" cy="40" r="2"/><circle cx="200" cy="55" r="2"/><circle cx="280" cy="50" r="2"/>
+        <circle cx="360" cy="60" r="2"/><circle cx="440" cy="55" r="2"/><circle cx="520" cy="65" r="2"/>
+        <circle cx="600" cy="85" r="2"/><circle cx="680" cy="95" r="2"/><circle cx="760" cy="105" r="2"/>
+        <circle cx="155" cy="200" r="2"/><circle cx="240" cy="210" r="2"/><circle cx="320" cy="215" r="2"/>
+        <circle cx="405" cy="218" r="2"/><circle cx="490" cy="217" r="2"/><circle cx="575" cy="219" r="2"/>
+      </g>
+
+      <line x1="50" y1="137" x2="860" y2="176" stroke="#C8671C" stroke-width="3"/>
+
+      <rect x="650" y="100" width="200" height="28" fill="#F5EFE2" stroke="#C8671C" stroke-width="1.5"/>
+      <text x="750" y="118" font-family="Georgia" font-size="12" font-weight="700" fill="#6B3410" text-anchor="middle" font-style="italic">y = −0.23x + 4.01</text>
+    </svg>
+    <p class="chart-cap">Each additional hour of sleep is associated with 0.23 fewer cups of coffee per day. Wide scatter confirms sleep is just one factor among many.</p>
+  </div>
+
+  <table class="bottom-table"><tr>
+    <td class="col-cell">
+      <div class="col">
+        <h4>01 · The Method</h4>
+        <h5>Three tests, one answer</h5>
+        <p><strong>Pearson correlation</strong> for the linear relationship, <strong>Spearman</strong> as a robustness check, and a <strong>one-way ANOVA</strong> across short/normal/long sleep groups.</p>
+        <p>All three rejected H₀ at p &lt; 0.001.</p>
+      </div>
+    </td>
+    <td class="gap"></td>
+    <td class="col-cell">
+      <div class="col">
+        <h4>02 · The Robustness</h4>
+        <h5>It holds everywhere</h5>
+        <p>The negative correlation between sleep and coffee appears in <strong>every subgroup</strong> tested — across genders, stress levels, and occupations.</p>
+        <p>Sleep <strong>quality</strong> shows the same pattern as sleep <strong>quantity</strong>, strengthening the result.</p>
+      </div>
+    </td>
+    <td class="gap"></td>
+    <td class="col-cell">
+      <div class="col">
+        <h4>03 · The Caveat</h4>
+        <h5>Correlation ≠ causation</h5>
+        <p>The data cannot say whether poor sleep drives people to coffee, or whether coffee disrupts sleep. Both are plausible.</p>
+        <p>A longitudinal study tracking individuals over time would be needed to settle the direction.</p>
+      </div>
+    </td>
+  </tr></table>
+
+  <table class="footer-table"><tr>
+    <td class="footer-left">[Name 1] · [Name 2] · [Name 3] · [Name 4]</td>
+    <td class="footer-right">C-DE211 Data Analysis · Spring 2026 · Egypt University of Informatics</td>
+  </tr></table>
+
+</div>
+
+</body>
+</html>
